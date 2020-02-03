@@ -30,7 +30,7 @@ fclose( $myfile );
 
 $fp = fopen('resources/table_names.txt', 'a' );
 if ($fp) {
-    $bytes_written = fwrite($fp, $argv['1'].'.php'. PHP_EOL);
+    $bytes_written = fwrite( $fp, $argv['1'].'.php'. PHP_EOL );
 
-    $success = fclose($fp);
+    $success = fclose( $fp );
 }

@@ -13,6 +13,8 @@ class test2_table {
                 $table->timestamps();
             });
 
+        }else {
+            echo 'table '.$table_name.' exists'."\n";
         }
     }
 }

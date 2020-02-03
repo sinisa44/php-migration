@@ -9,10 +9,11 @@ class example_table {
             
             Capsule::schema()->create ($table_name, function ( $table ) {
                 $table->increments('id');
-                $table->string('email')->unique();
                 $table->timestamps();
             });
 
+        }else {
+            echo 'table '.$table_name.' exists'."\n";
         }
     }
 }

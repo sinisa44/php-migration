@@ -13,10 +13,14 @@ class Migration {
         foreach( $this->files as $file ) {
             require_once( $file );
 
-            $name = rtrim( $file, '.php' );
-
+            $name = $this->set_table_name( $file );
             $name = new $name;
-            $name->create_table();
+
+            $name->create_table( $this->set_table_name( $file ) );
         }
+    }
+
+    private function set_table_name( $name ) {
+        return rtrim( $name, '.php' );
     }
 }

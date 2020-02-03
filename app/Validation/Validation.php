@@ -14,10 +14,10 @@ class Validation {
             }
 
             if( strpos( $rule, 'max' ) !== false ) {
-                static::max( $value, substr( $rule, 4) );
+                static::max( $value, substr( $rule, 4 ) );
             }
 
-            if( $rule == 'required'  || $rule == 'email' || $rule == 'integer' ){
+            if( $rule == 'required'  || $rule == 'email' || $rule == 'integer' ) {
                 static::$rule( $value );
             }
         }
@@ -56,7 +56,7 @@ class Validation {
 
     private function min( $value, $length ) {
 
-        if( strlen(( string ) $value ) <= $length ) {
+        if( strlen( ( string ) $value ) <= $length ) {
             static::$errors['min_err'] = 'error min value is '. $length;
         }
        

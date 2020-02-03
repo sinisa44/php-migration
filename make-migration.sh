@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/bash/php
 
-php table-creator.php
+php resources/file_creator.php $1

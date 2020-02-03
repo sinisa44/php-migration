@@ -1,5 +1,5 @@
 <?php
-namespace DB\Migrations;
+namespace App\Migrations;
 
 class Migration {
     private $files;
@@ -11,7 +11,7 @@ class Migration {
         
     public function migrate() {
         foreach( $this->files as $file ) {
-            require_once( $file );
+            require_once( 'database/tables/'.$file );
 
             $name = $this->set_table_name( $file );
             $name = new $name;

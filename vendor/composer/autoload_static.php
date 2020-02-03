@@ -37,7 +37,6 @@ class ComposerStaticInit8f48a5e3cc61dab6371c0824b02ef910
         ),
         'C' => 
         array (
-            'Cnf\\' => 4,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -91,10 +90,6 @@ class ComposerStaticInit8f48a5e3cc61dab6371c0824b02ef910
         array (
             0 => __DIR__ . '/../..' . '/database',
         ),
-        'Cnf\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/config',
-        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -106,6 +101,7 @@ class ComposerStaticInit8f48a5e3cc61dab6371c0824b02ef910
     );
 
     public static $classMap = array (
+        'App\\Validation\\Validation' => __DIR__ . '/../..' . '/app/Validation/Validation.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
@@ -143,7 +139,6 @@ class ComposerStaticInit8f48a5e3cc61dab6371c0824b02ef910
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
-        'Cnf\\Database\\Database' => __DIR__ . '/../..' . '/config/database/Database.php',
         'DB\\Migrations\\Migration' => __DIR__ . '/../..' . '/database/migrations/migration.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
         'Illuminate\\Container\\BoundMethod' => __DIR__ . '/..' . '/illuminate/container/BoundMethod.php',

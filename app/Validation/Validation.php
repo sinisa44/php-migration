@@ -2,11 +2,9 @@
 
 namespace App\Validation;
 
-use Throwable;
-
 class Validation {
 
-    private static $errors = [];
+    public static $errors = [];
 
     public static function validate( $value, $rules = [] ) {
 
@@ -26,7 +24,8 @@ class Validation {
         
         foreach( static::$errors as $err ){
           if( ! empty( $err ) ) {
-              exit ( $err );
+             echo $err."\n";
+            
           }
         }
         
@@ -42,8 +41,12 @@ class Validation {
       
     }
     
+    private function email( $email ){
+        if( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
+            static::$errors['email_err'] = 'invalid email format';
+        } 
+    }
 
-    private function email(){}
     private function integer( $value ){
         if( ! is_int( $value ) ) {
             // exit( 'error value is not integer' );

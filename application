@@ -16,7 +16,15 @@ switch ( $argv['1'] ) {
         echo $o['0'];
         break;
     case 'show:commands':
+        $commands = require_once( 'resources/Commands/command_list.php' );
+        foreach( $commands as $command ){
+         echo   'name         =>   ' .  $command['name']. PHP_EOL.
+                'description  =>   ' .  $command['description']. PHP_EOL .
+                'command      =>   ' .  $command['command']. PHP_EOL .
+                ' ' . PHP_EOL;
 
+        }
+    break;
     default:
         echo $argv['1'] . 'is not listed command';
         break;

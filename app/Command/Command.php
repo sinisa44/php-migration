@@ -2,6 +2,10 @@
 
 namespace App\Command;
 
+use App\File\File;
+use App\Migrations\Migration;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 class Command {
     private $command;
     private $command_list;
@@ -15,15 +19,26 @@ class Command {
        
             switch ( $this->command['1'] ) {
                 case 'make:migration':
-                    $this->execute_command( 'php resources/file_creator.php ' . $this->command['2'], 0 );
+                    // $this->execute_command( 'php resources/file_creator.php ' . $this->command['2'], 0 );
+                    $class_name = $this->command['2'];
+            
+                    File::create_file( 'database/tables/', $this->command['2'] , include('resources/templates/migration.php') );
+                    File::add_row( $this->command['2'], 'resources/files/table_names.txt' );
                 break;
                 
-                case 'migrate':
-                    include_once( 'resources/table_creator.php' );
+                case 'migrate':              
+                    $table_names = file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES);
+                    
+                    $migration = new Migration( $table_names );
+                    $migration->migrate();
                 break;
 
                 case 'drop:table':
-                    $this->execute_command( 'php resources/table_drop.php ' . $this->command['2'], 0 );
+                        Capsule::schema()->drop( $this->command['2'] );
+                    
+                        File::remove_row( $this->command['2'], 'resources/files/table_names.txt' );
+                    
+                        echo 'delete table ' . $this->command['2'] ;
                     break;
 
                 case 'show:commands':

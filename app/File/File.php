@@ -13,7 +13,7 @@ class File {
 
    public static function remove_row( $name, $file ) {;
         $content = file_get_contents( $file );
-        $content = str_replace( $name['1'].'.php', '' , $content );
+        $content = str_replace( $name.'.php', '' , $content );
 
         file_put_contents( $file, $content );
         self::skip_empty_lines( $file);

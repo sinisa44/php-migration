@@ -11,15 +11,15 @@ class Migration {
         
     public function migrate() {
         foreach( $this->files as $file ) {
+            if( empty( $file ) ) {
+                continue;
+            }
             require_once( 'database/tables/'.$file );
 
             $name = $this->set_table_name( $file );
             $name = new $name;
             $m = $name->create_table( $this->set_table_name( $file ) );
             
-            if( $m ) {
-                echo 'migration created '. $file ."\n";
-            }
         }
     }
 

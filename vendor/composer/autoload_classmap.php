@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Command\\Command' => $baseDir . '/app/Command/Command.php',
-    'App\\Folder\\Folder' => $baseDir . '/app/Folder/Folder.php',
+    'App\\Folder\\File' => $baseDir . '/app/File/File.php',
     'App\\Migrations\\Migration' => $baseDir . '/app/Migration/Migration.php',
     'App\\Validation\\Validation' => $baseDir . '/app/Validation/Validation.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

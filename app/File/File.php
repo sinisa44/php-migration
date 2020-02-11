@@ -2,7 +2,7 @@
 
 namespace App\Folder;
 
-class Folder {
+class File {
 
    public static function add_row( $data, $file ){
        $file = fopen( $file, 'a' );

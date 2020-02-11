@@ -1,7 +1,6 @@
 <?php
-$name = $argv['1'].'.php';
-
-$myfile = fopen('database/tables/' . $name , 'w' );
+require_once 'bootstrap.php';
+use App\Folder\Folder;
 
 $txt = '<?php
 
@@ -23,16 +22,10 @@ class '. $argv['1'].' {
     }
 }';
 
+Folder::create_file( 'database/tables/', $argv['1'], $txt);
+Folder::add_row( $argv['1'], 'resources/table_names.txt' );
 
-fwrite( $myfile, $txt );
-fclose( $myfile );
 
 
-$fp = fopen('resources/table_names.txt', 'a' );
-if ($fp) {
-    $bytes_written = fwrite( $fp, $argv['1'].'.php'. PHP_EOL );
-
-    $success = fclose( $fp );
-}
 
 echo 'create table ' . $argv['1'];

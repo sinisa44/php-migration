@@ -19,7 +19,6 @@ class Command {
        
             switch ( $this->command['1'] ) {
                 case 'make:migration':
-                    // $this->execute_command( 'php resources/file_creator.php ' . $this->command['2'], 0 );
                     $class_name = $this->command['2'];
             
                     File::create_file( 'database/tables/', $this->command['2'] , include('resources/templates/migration.php') );

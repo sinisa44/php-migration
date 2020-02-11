@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Folder;
+namespace App\File;
 
 class File {
 

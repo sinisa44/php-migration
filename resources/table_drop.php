@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Folder\File;
+use App\File\File;
 
 try{
     Capsule::schema()->drop( $argv['1'] );

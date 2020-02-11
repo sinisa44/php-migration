@@ -24,7 +24,7 @@ class Command {
 
                 case 'drop:table':
                     $this->execute_command( 'php resources/table_drop.php ' . $this->command['2'], 0 );
-                break;
+                    break;
 
                 case 'show:commands':
                     $this->display_commands( $this->command_list );

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class test123_table {
+class test_table {
 
     public function create_table( $table_name ) {
         if( ! Capsule::schema()->hasTable( $table_name ) ) {
@@ -12,8 +12,10 @@ class test123_table {
                 $table->timestamps();
             });
 
+            
+
         }else {
-            echo "table ".$table_name." exists";
+            echo "table ".$table_name." exists \n";
         }
     }
 }

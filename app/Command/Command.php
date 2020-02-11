@@ -47,6 +47,7 @@ class Command {
                 default:
                     echo $this->command['1'] . ' command is not set ';
                 break;
+                
             }
         
         

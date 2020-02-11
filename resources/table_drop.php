@@ -6,7 +6,6 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Folder\Folder;
 
 try{
-    // Capsule::schema()->drop( $argv['1'] ); 
     Folder::remove_row( $argv, 'resources/table_names.txt' );
 
      echo 'delete table ' . $argv['1'] ;

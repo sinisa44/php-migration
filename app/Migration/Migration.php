@@ -16,6 +16,8 @@ class Migration {
             $name = $this->set_table_name( $file );
             $name = new $name;
             $name->create_table( $this->set_table_name( $file ) );
+
+            echo 'migration created '. $file ."\n";
         }
     }
 

@@ -34,3 +34,5 @@ if ($fp) {
 
     $success = fclose( $fp );
 }
+
+echo 'create table ' . $argv['1'];

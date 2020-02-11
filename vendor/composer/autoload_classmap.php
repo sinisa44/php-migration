@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Folder\\Folder' => $baseDir . '/app/Folder/Folder.php',
     'App\\Migrations\\Migration' => $baseDir . '/app/Migration/Migration.php',
     'App\\Validation\\Validation' => $baseDir . '/app/Validation/Validation.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

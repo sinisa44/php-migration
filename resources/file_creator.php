@@ -25,7 +25,3 @@ class '. $argv['1'].' {
 Folder::create_file( 'database/tables/', $argv['1'], $txt);
 Folder::add_row( $argv['1'], 'resources/table_names.txt' );
 
-
-
-
-echo 'create table ' . $argv['1'];

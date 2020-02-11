@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class sinisaTest_table {
+class test_table {
 
     public function create_table( $table_name ) {
         if( ! Capsule::schema()->hasTable( $table_name ) ) {

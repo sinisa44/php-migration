@@ -11,7 +11,6 @@ class Migration {
         
     public function migrate() {
         foreach( $this->files as $file ) {
-            echo $file;
             require_once( 'database/tables/'.$file );
 
             $name = $this->set_table_name( $file );

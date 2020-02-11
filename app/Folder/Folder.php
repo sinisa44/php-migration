@@ -22,13 +22,13 @@ class Folder {
         $file = fopen( $file.$name.'.php', 'w' );
         fwrite( $file, $txt );
         fclose( $file ); 
+        echo 'create table '. $name;
    }
 
    private static function skip_empty_lines( $file ) {
-   
-    $str=file_get_contents( $file );
-    $str = preg_replace( "/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/" , "\n" , $str );
-    file_put_contents( $file, $str );
+        $str=file_get_contents( $file );
+        $str = preg_replace( "/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/" , "\n" , $str );
+        file_put_contents( $file, $str );
    }
 
 }

@@ -1,8 +1,10 @@
 <?php
 
+return '<?php
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class sinisaTest2_table {
+class '. $argv['1'].' {
 
     public function create_table( $table_name ) {
         if( ! Capsule::schema()->hasTable( $table_name ) ) {
@@ -16,4 +18,4 @@ class sinisaTest2_table {
             echo "table ".$table_name." exists";
         }
     }
-}
+}';

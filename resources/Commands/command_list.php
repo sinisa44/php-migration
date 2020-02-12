@@ -3,9 +3,9 @@
 return [
     'commands'=>[
         [
-        'name'        => 'make:migration',
-        'description' => 'creates new table',
-        'command'      => 'php application make:migration TableName_table'
+            'name'        => 'make:migration',
+            'description' => 'creates new table',
+            'command'      => 'php application make:migration TableName_table'
         ],
         [
             'name'        => 'migrate',

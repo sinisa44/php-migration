@@ -24,8 +24,9 @@ class Command {
                     Migration::make_migration( $this->command['2'], 'resources/templates/migration.php', 'resources/files/table_names.txt' );
                 break;
                 
-                case 'migrate':              
-                    Migration::migrate( file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES ) );
+                case 'migrate':
+                    $table = 'Tables_in_'. getenv( 'DB_DATABASE' );              
+                    Migration::migrate( file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES ), $table );
                 break;
 
                 case 'drop:table':
@@ -65,11 +66,17 @@ class Command {
         $commands = require_once( $command_list );
 
         foreach( $commands['commands'] as $command ) {
-            echo   'name          =>   ' .  $command['name']. PHP_EOL.
-                   'description   =>   ' .  $command['description']. PHP_EOL .
-                   'command       =>   ' .  $command['command']. PHP_EOL .
-                    ' ' . PHP_EOL.
-                    '------------------------------------------------------' . PHP_EOL;
+          
+           echo Message::color_text( 'name        ', '104' ) . 
+                Message::color_text( ' =>  ', '44') .
+                Message::color_text( $command['name'], '104') . PHP_EOL .
+                Message::color_text( 'description ', '104' ) .
+                Message::color_text( ' =>  ', '44' ) .
+                Message::color_text( $command['description'], '104' ) . PHP_EOL .
+                Message::color_text( 'command     ', '104' ) . 
+                Message::color_text( ' =>  ', '44' ).
+                Message::color_text( $command['command'], '104' ) . PHP_EOL.PHP_EOL;
+
         }
     }
 }

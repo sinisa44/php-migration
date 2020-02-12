@@ -34,17 +34,7 @@ class Migration {
         File::add_row( $command, $file_name  );
     }
 
-    
 
-    public static function show_tables( $table_name ){
-      $tables =  Capsule::schema()->getAllTables();
-      $i = 0;
-
-      foreach( $tables as $table ){
-          $i++;
-        echo '| Table | '. $tables[$i-1]->$table_name . PHP_EOL;
-      }
-    }
 
     public static function show_columns( $table_name ) {
         $table = Capsule::schema()->getColumnListing( $table_name );

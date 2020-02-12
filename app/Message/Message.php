@@ -9,7 +9,7 @@ class Message {
     }
 
     public static function display_success( $message ) {
-        echo "\e[38;5;253;102m Success: \e[42m " . $message  . " \e[0m" . PHP_EOL;
+        echo "\e[97;5;253;102m Success: \e[42m " . $message  . " \e[0m" . PHP_EOL;
         
     }
 
@@ -19,6 +19,10 @@ class Message {
 
     public static function display_error_action( $message ) {
         echo "\e[101m".$message . "\e[0m" . PHP_EOL;
+    }
+
+    public static function color_text( $text, $color ) {
+        return "\e[". $color ."  m " . $text . " \e[0m";
     }
 
 

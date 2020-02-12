@@ -13,7 +13,8 @@ class Database {
         
         if( $tables ) {
             for( $i = 0; $i < count( $tables ); $i++ ) {
-               echo '| Table | ' . $tables[$i]->$table_name . PHP_EOL;
+                  echo Message::color_text( ' TABLE ', '44') .
+                       Message::color_text( $tables[$i]->$table_name, '104') . PHP_EOL;
             }
         }
     }
@@ -26,10 +27,11 @@ class Database {
         for( $i = 0; $i < count( $table ); $i++ ) {
             $column_type = Capsule::schema()->getColumnType( $table_name, $table[$i] );
             
-                echo $i . ' | '. $column_type . ' | ' . $table[$i] . PHP_EOL;
+            echo Message::color_text( $i, '44' ) .
+                 Message::color_text( $column_type, '104') .
+                 Message::color_text( $table[$i], '44' ) . PHP_EOL.PHP_EOL;
         }
         }else{
-            // echo $table_name . ' does not exist in database' . PHP_EOL;
             Message::display_error( $table_name.' does not exist in database' );
         } 
     }

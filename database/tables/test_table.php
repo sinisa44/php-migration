@@ -1,10 +1,8 @@
 <?php
 
-return '<?php
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class '. $class_name .' {
+class test_table {
 
     public function create_table( $table_name ) {
         if( ! Capsule::schema()->hasTable( $table_name ) ) {
@@ -18,4 +16,4 @@ class '. $class_name .' {
             echo "table ".$table_name." exists \n";
         }
     }
-}';
+}

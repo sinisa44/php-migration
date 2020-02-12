@@ -2,9 +2,11 @@
 
 namespace App\Command;
 
-use App\File\File;
+
 use App\Migrations\Migration;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Database\Database;
+use App\Test\Test;
+
 
 class Command {
     private $command;
@@ -23,23 +25,34 @@ class Command {
                 break;
                 
                 case 'migrate':              
-                    $table_names = file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES);   
-                    $migration = new Migration( $table_names );
-                    $migration->migrate();
+                    Migration::migrate( file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES ) );
                 break;
 
                 case 'drop:table':
-                    Migration::drop_migration( $this->command['2'], 'resources/files/table_names.txt' );
+                    Database::drop_table( $this->command['2'], 'resources/files/table_names.txt' );
+                break;
+
+                case 'show:tables';
+                    $table = 'Tables_in_'. getenv( 'DB_DATABASE' ); 
+                    Database::show_tables( $table );
+                break;
+
+                case 'show:columns';
+                    Database::show_columns( $this->command['2'] );
                 break;
 
                 case 'show:commands':
                     $this->display_commands( $this->command_list );
                 break;
 
+                case 'test:test':
+                    Test::test();
+                break;
+
                 default:
                     echo $this->command['1'] . ' command is not set ';
                 break;
-
+ 
             }
     }
 
@@ -50,7 +63,8 @@ class Command {
             echo   'name          =>   ' .  $command['name']. PHP_EOL.
                    'description   =>   ' .  $command['description']. PHP_EOL .
                    'command       =>   ' .  $command['command']. PHP_EOL .
-                    ' ' . PHP_EOL;
+                    ' ' . PHP_EOL.
+                    '------------------------------------------------------' . PHP_EOL;
         }
     }
 }

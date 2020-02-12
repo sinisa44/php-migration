@@ -21,7 +21,18 @@ return [
             'name'        => 'show:commands',
             'description' => 'show all commands',
             'command'     => 'php application show:commands'
-        ]
+        ],
+        [
+            'name'        => 'show:columns',
+            'description' => 'show column type for specific table',
+            'command'     => 'php application show:columns TableName'
+        ],
+        [
+            'name'        => 'show:tables',
+            'description' => 'list all tables from current database',
+            'command'     => 'php application show:tables'
+        ],
+      
     ],
    
 ];

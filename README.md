@@ -4,4 +4,7 @@ Database Migration script,
 It is almost same as Laravel.
 
 Command list:
-in terminal type: php application show:commands
+in terminal type: php cmd show:commands, it will display all available commands.
+
+
+

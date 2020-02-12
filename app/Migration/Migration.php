@@ -29,7 +29,6 @@ class Migration {
 
     public static function make_migration( $command, $template, $file_name ) {
         $class_name = $command;
-         
         File::create_file( 'database/tables/', $command, include( $template ) );
         File::add_row( $command, $file_name  );
     }

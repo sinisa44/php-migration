@@ -14,7 +14,7 @@ class Database {
         if( $tables ) {
             for( $i = 0; $i < count( $tables ); $i++ ) {
                   echo Message::color_text( ' TABLE ', '44') .
-                       Message::color_text( $tables[$i]->$table_name, '104') . PHP_EOL;
+                       Message::color_text( $tables[$i]->$table_name, '104' ) . PHP_EOL;
             }
         }
     }
@@ -56,5 +56,28 @@ class Database {
         } 
     }
 
-    
+    public static function rename_table() {
+        $tables = Capsule::schema()->getAllTables();
+        
+        Message::display_info( 'Which table do you want to rename ?');
+
+         $old_name = self::handle_cli( 'php://stdin');
+        
+         if( Capsule::schema()->hasTable( $old_name ) ) {
+            Message::display_info( 'chose new name for table' );
+ 
+            $new_name = self::handle_cli( 'php://stdin' );
+            
+            $rename =  Capsule::schema()->rename( $old_name, $new_name );
+                
+            Message::display_success( 'Table ' . $old_name . ' is renamed to ' . $new_name );
+            
+        }else{
+            Message::display_error( 'There is no table with name: "' . $old_name . '"' );
+        }
+    }
+
+    private static function handle_cli( $handle ) {
+        return trim( fgets( fopen( $handle, 'r' ) ) );
+    }
 }

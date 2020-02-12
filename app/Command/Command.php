@@ -51,6 +51,9 @@ class Command {
                     $this->display_commands( $this->command_list );
                 break;
 
+                case 'rename:table':
+                    Database::rename_table();
+                break;
                 case 'test:test':
                     Test::test();
                 break;

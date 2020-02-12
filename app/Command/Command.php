@@ -19,26 +19,18 @@ class Command {
        
             switch ( $this->command['1'] ) {
                 case 'make:migration':
-                    $class_name = $this->command['2'];
-            
-                    File::create_file( 'database/tables/', $this->command['2'] , include('resources/templates/migration.php') );
-                    File::add_row( $this->command['2'], 'resources/files/table_names.txt' );
+                    Migration::make_migration( $this->command['2'], 'resources/templates/migration.php', 'resources/files/table_names.txt' );
                 break;
                 
                 case 'migrate':              
-                    $table_names = file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES);
-                    
+                    $table_names = file( 'resources/files/table_names.txt', FILE_IGNORE_NEW_LINES);   
                     $migration = new Migration( $table_names );
                     $migration->migrate();
                 break;
 
                 case 'drop:table':
-                        Capsule::schema()->drop( $this->command['2'] );
-                    
-                        File::remove_row( $this->command['2'], 'resources/files/table_names.txt' );
-                    
-                        echo 'delete table ' . $this->command['2'] ;
-                    break;
+                    Migration::drop_migration( $this->command['2'], 'resources/files/table_names.txt' );
+                break;
 
                 case 'show:commands':
                     $this->display_commands( $this->command_list );
@@ -47,10 +39,8 @@ class Command {
                 default:
                     echo $this->command['1'] . ' command is not set ';
                 break;
-                
+
             }
-        
-        
     }
 
     private function display_commands( $command_list ) {
@@ -62,10 +52,5 @@ class Command {
                    'command       =>   ' .  $command['command']. PHP_EOL .
                     ' ' . PHP_EOL;
         }
-    }
-
-    private function execute_command( $command, $option ) {
-        exec( $command, $o );
-        echo $o[$option];
     }
 }

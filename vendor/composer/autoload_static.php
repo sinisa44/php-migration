@@ -130,6 +130,7 @@ class ComposerStaticInit8f48a5e3cc61dab6371c0824b02ef910
         'App\\Command\\Command' => __DIR__ . '/../..' . '/app/Command/Command.php',
         'App\\Database\\Database' => __DIR__ . '/../..' . '/app/Database/Database.php',
         'App\\File\\File' => __DIR__ . '/../..' . '/app/File/File.php',
+        'App\\Message\\Message' => __DIR__ . '/../..' . '/app/Message/Message.php',
         'App\\Migrations\\Migration' => __DIR__ . '/../..' . '/app/Migration/Migration.php',
         'App\\Test\\Test' => __DIR__ . '/../..' . '/app/Test/Test.php',
         'App\\Validation\\Validation' => __DIR__ . '/../..' . '/app/Validation/Validation.php',

@@ -5,15 +5,6 @@ namespace App\Test;
 
 class Test {
   public static function test() {
-    echo "Are you sure you want to do this?  Type 'yes' to continue: ";
-    $handle = fopen ("php://stdin","r");
-    $line = fgets($handle);
-    if(trim($line) != 'yes'){
-        echo "ABORTING!\n";
-        exit;
-    }
-    fclose($handle);
-    echo "\n"; 
-    echo "Thank you, continuing...\n";
+    echo "Default \e[42mLight green";
   }   
 }

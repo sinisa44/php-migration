@@ -31,11 +31,7 @@ class Migration {
         File::add_row( $command, $file_name  );
     }
 
-    public static function drop_migration( $command, $file ) {
-        Capsule::schema()->drop( $command );
-        File::remove_row( $command, $file );
-        echo 'delete table ' . $command;
-    }
+    
 
     public static function show_tables( $table_name ){
       $tables =  Capsule::schema()->getAllTables();

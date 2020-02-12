@@ -1,6 +1,7 @@
 <?php
 
 namespace App\File;
+use App\Message\Message;
 
 class File {
 
@@ -24,7 +25,8 @@ class File {
 
         fwrite( $file, $txt );
         fclose( $file ); 
-        echo 'create table '. $name;
+     //    echo 'create table '. $name;
+          Message::display_success( 'create table ' . $name );
    }
 
    private static function skip_empty_lines( $file ) {

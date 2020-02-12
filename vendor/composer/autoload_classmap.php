@@ -9,6 +9,7 @@ return array(
     'App\\Command\\Command' => $baseDir . '/app/Command/Command.php',
     'App\\Database\\Database' => $baseDir . '/app/Database/Database.php',
     'App\\File\\File' => $baseDir . '/app/File/File.php',
+    'App\\Message\\Message' => $baseDir . '/app/Message/Message.php',
     'App\\Migrations\\Migration' => $baseDir . '/app/Migration/Migration.php',
     'App\\Test\\Test' => $baseDir . '/app/Test/Test.php',
     'App\\Validation\\Validation' => $baseDir . '/app/Validation/Validation.php',

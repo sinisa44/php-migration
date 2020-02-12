@@ -6,7 +6,7 @@ namespace App\Command;
 use App\Migrations\Migration;
 use App\Database\Database;
 use App\Test\Test;
-
+use App\Message\Message;;
 
 class Command {
     private $command;
@@ -38,6 +38,11 @@ class Command {
                 break;
 
                 case 'show:columns';
+                    if( empty( $this->command['2'] ) )
+                    {
+                        Message::display_error( 'The ' . $this->command['2']. ' is not existing in database' );
+                        exit;
+                    }
                     Database::show_columns( $this->command['2'] );
                 break;
 
@@ -50,7 +55,7 @@ class Command {
                 break;
 
                 default:
-                    echo $this->command['1'] . ' command is not set ';
+                    Message::display_error( 'Command is not in command list.' );
                 break;
  
             }

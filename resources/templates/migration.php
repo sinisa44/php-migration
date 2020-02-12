@@ -3,6 +3,7 @@
 return '<?php
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Message\Message;
 
 class '. $class_name .' {
 
@@ -13,9 +14,11 @@ class '. $class_name .' {
                 $table->increments("id");
                 $table->timestamps();
             });
-            echo "table " . $table_name. " created \n";
+            // echo "table " . $table_name. " created \n";
+            Message::display_success( "table " . $table_name . " created" );
         }else {
-            echo "table ".$table_name." exists \n";
+            // echo "table ".$table_name." exists \n";
+            Message::display_error( "Table " . $table_name. " exists in database");
         }
     }
 }';

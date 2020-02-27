@@ -1,5 +1,5 @@
 <?php
-namespace App\Migrations;
+namespace App\Migration;
 
 use App\File\File;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -27,7 +27,7 @@ class Migration {
         }
     }
 
-    public static function make_migration( $command, $template, $file_name ) {
+    public static function make_migration( $command, $template, $file_name = null ) {
         $class_name = $command;
         File::create_file( 'database/tables/', $command, include( $template ) );
         File::add_row( $command, $file_name  );

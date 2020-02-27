@@ -32,12 +32,15 @@ class Database {
                  Message::color_text( $table[$i], '44' ) . PHP_EOL.PHP_EOL;
         }
         }else{
-            Message::display_error( $table_name.' does not exist in database' );
+            Message::display_error( 'Table ' .$table_name.' does not exist in database' );
         } 
     }
 
     public static function drop_table( $command, $file ) {
-    
+        if( ! Capsule::schema()->hasTable( $command ) ){
+            Message::display_error( $command. ' does not exist in database' );
+            exit;
+        }
         Message::display_info( 'Are you sure you want to delete table ' . $command . ' ? (yes/no)' );
 
         $handle = fopen( 'php://stdin', 'r' );
@@ -47,6 +50,7 @@ class Database {
             Message::display_error_action( 'ABORTING . . .' );
             exit;
         }else{
+          
             Capsule::schema()->drop( $command );
 
             File::remove_row( $command, $file );

@@ -26,7 +26,7 @@ class File {
         fwrite( $file, $txt );
         fclose( $file ); 
      //    echo 'create table '. $name;
-          Message::display_success( 'create table ' . $name );
+          Message::display_success( 'create ' . $name  );
    }
 
    private static function skip_empty_lines( $file ) {

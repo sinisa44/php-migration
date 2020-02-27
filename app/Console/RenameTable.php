@@ -8,7 +8,7 @@ class RenameTable {
 
     public function run( $option = null ) {
     Database::rename_table() ;     
-   }
+    }
         
     public function get_name() {
         return $this->name;

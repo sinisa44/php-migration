@@ -28,53 +28,53 @@ class Command {
     }
 
    /**
-    *The command runner method 
+    *The command runner
     *
     */
     public function call_command() {
 
-            switch( $this->command['1']) {
-                case 'make:command':
-                    $class_name = $this->command['2'];
-                    File::create_file( 'app/Console/', $class_name, include('resources/templates/command.php'));
-                
-                case 'show:commands':
-                    $files = scandir( 'app/console', 1 );
-                    array_splice( $files, -2, 2 );
+        switch( $this->command['1']) {
+        case 'make:command':
+            $class_name = $this->command['2'];
+            File::create_file( 'app/Console/', $class_name, include('resources/templates/command.php'));
+        
+        case 'show:commands':
+            $files = scandir( 'app/console', 1 );
+            array_splice( $files, -2, 2 );
 
-                    $commands = array();
-                    for( $i = 0; $i < count( $files ); $i ++ ) {
-                        $name = rtrim( $files[$i], '.php' );
-                        require_once( 'app/Console/'. $name . '.php' );
-                        $name = new $name;
+            $commands = array();
+            for( $i = 0; $i < count( $files ); $i ++ ) {
+                $name = rtrim( $files[$i], '.php' );
+                require_once( 'app/Console/'. $name . '.php' );
+                $name = new $name;
 
-                     $commands[] = $name;
-                    }
-    
-                    $this->display_commands( $commands );
-                
-                default:
-                    $files = scandir( 'app/console',1 );
-                    array_splice( $files, -2, 2 );
-                
-                    
-                    for( $i = 0; $i < count( $files ); $i ++ ) {
-                        $name = rtrim( $files[$i], '.php' );
-                    
-                        require_once( 'app/Console/'.$name. '.php' );
-
-                        $name = new $name;
-
-                        if( $name->get_name() == $this->command['1'] ) {
-                            if( ! empty( $this->command['2'] ) ) {
-                                $name->run( $this->command['2'] );
-                            }else{
-                                $name->run();
-                            }
-                        }
-                    }
-                
+                $commands[] = $name;
             }
+
+            $this->display_commands( $commands );
+        
+        default:
+            $files = scandir( 'app/console',1 );
+            array_splice( $files, -2, 2 );
+        
+            
+            for( $i = 0; $i < count( $files ); $i ++ ) {
+                $name = rtrim( $files[$i], '.php' );
+            
+                require_once( 'app/Console/'.$name. '.php' );
+
+                $name = new $name;
+
+                if( $name->get_name() == $this->command['1'] ) {
+                    if( ! empty( $this->command['2'] ) ) {
+                        $name->run( $this->command['2'] );
+                    }else{
+                        $name->run();
+                    }
+                }
+            }
+        
+        }
     }
 
     /**

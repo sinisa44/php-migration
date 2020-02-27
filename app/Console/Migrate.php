@@ -4,7 +4,7 @@ use App\Migration\Migration;
 
 class Migrate {
     private $name = "migrate";
-    private $description = "decsription";
+    private $description = "migrates table";
 
     public function run( $option = null ) {
         $name = 'Tables_in_'.getenv( 'DB_database' );

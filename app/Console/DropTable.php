@@ -5,6 +5,7 @@ use App\Message\Message;
 
 class DropTable {
     private $name = "drop:table";
+    
     private $description = "drop table from current database";
 
     public function run( $option = null ) {

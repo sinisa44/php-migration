@@ -14,9 +14,7 @@ class Migration {
     public static function migrate( $table_names ) {
         foreach( $table_names as $t_name ) {
             if( empty( $t_name ) ) { continue; }
-            if( Capsule::schema()->hasTable( rtrim( $t_name, '.php' ) ) ) {
-                continue;
-            }
+            if( Capsule::schema()->hasTable( rtrim( $t_name, '.php' ) ) ) { continue; }
 
             require_once( 'database/tables/'.$t_name );
 

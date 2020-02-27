@@ -6,13 +6,31 @@ use App\File\File;
 use App\Message\Message;;
 
 class Command {
+
+    /**
+     * The entry command from cli
+     * 
+     * @var string
+     * 
+     */
     private $command;
 
+
+    /**
+     * Class constructor
+     * 
+     * @param string $command 
+     * @param aray $command_list
+     */
     public function __construct( $command, $command_list ) {
         $this->command      = $command;
         $this->command_list =  $command_list ;
     }
 
+   /**
+    *The command runner method 
+    *
+    */
     public function call_command() {
 
             switch( $this->command['1']) {
@@ -59,18 +77,23 @@ class Command {
             }
     }
 
+    /**
+     * Display available command
+     * 
+     * @param array
+     */
     private function display_commands( $command_list ) {
        
         foreach( $command_list as $cl ) {
-           echo Message::color_text( 'name        ', '104' ) . 
-                Message::color_text( ' =>  ', '44') .
-                Message::color_text( $cl->get_name(), '104') . PHP_EOL .
-                Message::color_text( 'description ', '104' ) .
-                Message::color_text( ' =>  ', '44' ) .
-                Message::color_text( $cl->get_description(), '104' ) . PHP_EOL .
-                Message::color_text( 'command     ', '104' ) . 
-                Message::color_text( ' =>  ', '44' ).
-                Message::color_text( $cl->get_name(), '104' ) . PHP_EOL.PHP_EOL;
+           echo Message::color_text( 'name        ', '44' ) . 
+                Message::color_text( ' =>  ', '104') .
+                Message::color_text( $cl->get_name(), '44') . PHP_EOL .
+                Message::color_text( 'description ', '44' ) .
+                Message::color_text( ' =>  ', '104' ) .
+                Message::color_text( $cl->get_description(), '44' ) . PHP_EOL .
+                Message::color_text( 'command     ', '44' ) . 
+                Message::color_text( ' =>  ', '104' ).
+                Message::color_text( $cl->get_name(), '44' ) . PHP_EOL.PHP_EOL;
 
         }
     }

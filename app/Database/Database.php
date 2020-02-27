@@ -7,7 +7,13 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Message\Message;
 
 class Database {
-
+    
+    /*
+    *Display all tables from database
+    *
+    *@param string
+    *
+    */
     public static function show_tables( $table_name ){
         $tables =  Capsule::schema()->getAllTables();
         
@@ -18,7 +24,14 @@ class Database {
             }
         }
     }
-  
+    
+    /*
+    *Display columns for selected table
+    *
+    *@param string
+    *
+    @throws Error if table is not exist
+    */
     public static function show_columns( $table_name ) {
      
         $table = Capsule::schema()->getColumnListing( $table_name );
@@ -35,12 +48,21 @@ class Database {
             Message::display_error( 'Table ' .$table_name.' does not exist in database' );
         } 
     }
-
+    
+    /**
+     * Drops table from current database
+     * 
+     * @param string
+     * @param file
+     * 
+     * @throws Error if table is not exist
+     */
     public static function drop_table( $command, $file ) {
         if( ! Capsule::schema()->hasTable( $command ) ){
             Message::display_error( $command. ' does not exist in database' );
             exit;
         }
+
         Message::display_info( 'Are you sure you want to delete table ' . $command . ' ? (yes/no)' );
 
         $handle = fopen( 'php://stdin', 'r' );
@@ -51,14 +73,17 @@ class Database {
             exit;
         }else{
           
-            Capsule::schema()->drop( $command );
-
-            File::remove_row( $command, $file );
-            
-            Message::display_success( 'Deleting table ' . $command .' . . .');
+        Capsule::schema()->drop( $command );
+        File::remove_row( $command, $file );        
+        Message::display_success( 'Deleting table ' . $command .' . . .');
 
         } 
     }
+    /**
+     * Renames table
+     * 
+     * 
+     */
 
     public static function rename_table() {
         $tables = Capsule::schema()->getAllTables();

@@ -20,6 +20,7 @@ class Command {
      * Class constructor
      * 
      * @param string $command 
+     * @param 
      * @param aray $command_list
      */
     public function __construct( $command, $command_list ) {
@@ -80,7 +81,7 @@ class Command {
     /**
      * Display available command
      * 
-     * @param array
+     * @param object
      */
     private function display_commands( $command_list ) {
        

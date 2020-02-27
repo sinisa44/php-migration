@@ -15,6 +15,7 @@ class MakeMigration {
         }
 
         Migration::make_migration( $option, 'resources/templates/migration.php', 'resources/files/table_names.txt');
+       
      }
         
     public function get_name() {

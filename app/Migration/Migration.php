@@ -5,6 +5,14 @@ use App\File\File;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Migration {
+
+    
+
+    /**
+     * Class constructor
+     * 
+     * @param file
+     */
    
     public function __construct( $files = [] ) {
         $this->files = $files;

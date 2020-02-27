@@ -34,8 +34,7 @@ class Validation {
 
     private function required( $string ) {
         if( empty( $string ) ) {
-            
-            // exit( 'error field is required' );
+ 
             static::$errors['req_err'] = 'error value is required';
         }
       

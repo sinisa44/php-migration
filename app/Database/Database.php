@@ -88,35 +88,35 @@ class Database {
      */
 
     public static function rename_table() {
-        $tables = Capsule::schema()->getAllTables();
+         $tables = Capsule::schema()->getAllTables();
         
-         Message::display_info( 'Which table do you want to rename ?');
-
-         $old_name = self::handle_cli( 'php://stdin');
+         $old_name = self::set_question( 'which $table do you want to rename' );
         
          if( Capsule::schema()->hasTable( $old_name ) ) {
-            Message::display_info( 'chose new name for table' );
- 
-            $new_name = self::handle_cli( 'php://stdin' );
-            
-            $rename =  Capsule::schema()->rename( $old_name, $new_name );
+     
+            $new_name = self::set_question(( 'chose new name for table' ) );
+
+            Capsule::schema()->rename( $old_name, $new_name );
                 
             Message::display_success( 'Table ' . $old_name . ' is renamed to ' . $new_name );
-            
         }else{
             Message::display_error( 'There is no table with name: "' . $old_name . '"' );
         }
     }
     
-
     /**
-     * Trims file name
+     * Set question in CLI
      * 
-     * @param string
+     * @param string $question
      * 
-     * @return string
+     *@return string 
      */
-    private static function handle_cli( $handle ) {
-        return trim( fgets( fopen( $handle, 'r' ) ) );
+    public static function set_question( $question ) {
+        Message::display_info( $question );
+
+        $answer = trim( fgets( fopen( 'php://stdin', 'r') ) );
+        
+        return $answer;
     }
+
 }

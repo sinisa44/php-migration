@@ -76,7 +76,7 @@ class Database {
           
         Capsule::schema()->drop( $command );
         File::remove_row( $command, $file );        
-        Message::display_success( 'Deleting table ' . $command .' . . .');
+        Message::display_success( 'Deleting table ' . $command .' . . .' );
 
         } 
     }

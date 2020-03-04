@@ -46,7 +46,7 @@ class Database {
                  Message::color_text( $table[$i], '44' ) . PHP_EOL.PHP_EOL;
         }
         }else{
-            Message::display_error( 'Table ' .$table_name.' does not exist in database' );
+            echo  Message::display_error( 'Table ' .$table_name.' does not exist in database' );
         } 
     }
     
@@ -60,23 +60,23 @@ class Database {
      */
     public static function drop_table( $command, $file ) {
         if( ! Capsule::schema()->hasTable( $command ) ){
-            Message::display_error( $command. ' does not exist in database' );
-            exit;
+           echo Message::display_error( $command. ' does not exist in database' );
+           exit;
         }
 
-        Message::display_info( 'Are you sure you want to delete table ' . $command . ' ? (yes/no)' );
+        echo Message::display_info( 'Are you sure you want to delete table ' . $command . ' ? (yes/no)' );
 
         $handle = fopen( 'php://stdin', 'r' );
         $line   = fgets( $handle );
         
         if( trim( $line) != 'yes' ){
-            Message::display_error_action( 'ABORTING . . .' );
+            echo Message::display_error_action( 'ABORTING . . .' );
             exit;
         }else{
           
         Capsule::schema()->drop( $command );
         File::remove_row( $command, $file );        
-        Message::display_success( 'Deleting table ' . $command .' . . .' );
+        echo Message::display_success( 'Deleting table ' . $command .' . . .' );
 
         } 
     }
@@ -90,7 +90,7 @@ class Database {
     public static function rename_table() {
          $tables = Capsule::schema()->getAllTables();
         
-         $old_name = self::set_question( 'which $table do you want to rename' );
+         $old_name = self::set_question( 'which table do you want to rename' );
         
          if( Capsule::schema()->hasTable( $old_name ) ) {
      
@@ -98,9 +98,9 @@ class Database {
 
             Capsule::schema()->rename( $old_name, $new_name );
                 
-            Message::display_success( 'Table ' . $old_name . ' is renamed to ' . $new_name );
+            echo  Message::display_success( 'Table ' . $old_name . ' is renamed to ' . $new_name );
         }else{
-            Message::display_error( 'There is no table with name: "' . $old_name . '"' );
+            echo Message::display_error( 'There is no table with name: "' . $old_name . '"' );
         }
     }
     
@@ -112,7 +112,7 @@ class Database {
      *@return string 
      */
     public static function set_question( $question ) {
-        Message::display_info( $question );
+        echo Message::display_info( $question );
 
         $answer = trim( fgets( fopen( 'php://stdin', 'r') ) );
         

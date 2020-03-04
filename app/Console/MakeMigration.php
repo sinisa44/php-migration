@@ -10,7 +10,7 @@ class MakeMigration {
 
     public function run( $option = null ) {
         if( empty( $option ) ) {
-            Message::display_error( 'migration name is required' );
+          echo  Message::display_error( 'migration name is required' );
             exit;
         }
 

@@ -51,7 +51,7 @@ class File {
         fwrite( $file, $txt );
         fclose( $file ); 
      //    echo 'create table '. $name;
-          Message::display_success( 'create ' . $name  );
+        echo Message::display_success( 'create ' . $name  );
    }
    
    /**

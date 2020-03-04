@@ -15,10 +15,10 @@ class '. $class_name .' {
                 $table->timestamps();
             });
          
-            Message::display_success( "table " . $table_name . " created" );
+          echo  Message::display_success( "table " . $table_name . " created" );
         }else {
           
-            Message::display_error( "Table " . $table_name. " exists in database");
+          echo  Message::display_error( "Table " . $table_name. " exists in database");
         }
     }
 }';

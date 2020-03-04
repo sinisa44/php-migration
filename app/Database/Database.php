@@ -51,7 +51,7 @@ class Database {
     }
     
     /**
-     * Drops table from current database
+     * Drops table from current database and remove row from file
      * 
      * @param string $command
      * @param file $file
@@ -82,14 +82,15 @@ class Database {
     }
     /**
      * Rename table
-     * 
+     *
+     * @throws Message error if table is not exist 
      * @return void
      */
 
     public static function rename_table() {
         $tables = Capsule::schema()->getAllTables();
         
-        Message::display_info( 'Which table do you want to rename ?');
+         Message::display_info( 'Which table do you want to rename ?');
 
          $old_name = self::handle_cli( 'php://stdin');
         

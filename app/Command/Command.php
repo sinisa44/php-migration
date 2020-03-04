@@ -20,7 +20,7 @@ class Command {
      * Class constructor
      * 
      * @param string $command 
-     * @param 
+     * 
      * @param aray $command_list
      */
     public function __construct( $command, $command_list ) {
@@ -31,6 +31,7 @@ class Command {
    /**
     *The command runner
     *
+    *@return void
     */
     public function call_command() {
 
@@ -53,6 +54,7 @@ class Command {
             }
 
             $this->display_commands( $commands );
+           
         
         default:
             $files = scandir( 'app/console',1 );
@@ -81,21 +83,24 @@ class Command {
     /**
      * Display available command
      * 
-     * @param object
+     * @param object $command_list
+     * 
+     * @return void
      */
     private function display_commands( $command_list ) {
-       
+        
         foreach( $command_list as $cl ) {
-           echo Message::color_text( 'name        ', '44' ) . 
-                Message::color_text( ' =>  ', '104') .
-                Message::color_text( $cl->get_name(), '44') . PHP_EOL .
-                Message::color_text( 'description ', '44' ) .
-                Message::color_text( ' =>  ', '104' ) .
-                Message::color_text( $cl->get_description(), '44' ) . PHP_EOL .
-                Message::color_text( 'command     ', '44' ) . 
-                Message::color_text( ' =>  ', '104' ).
-                Message::color_text( $cl->get_name(), '44' ) . PHP_EOL.PHP_EOL;
-
+           echo     Message::color_text( 'name        ', '44' ) . 
+                    Message::color_text( ' =>  ', '104') .
+                    Message::color_text( $cl->get_name(), '44') . PHP_EOL .
+                    Message::color_text( 'description ', '44' ) .
+                    Message::color_text( ' =>  ', '104' ) .
+                    Message::color_text( $cl->get_description(), '44' ) . PHP_EOL .
+                    Message::color_text( 'command     ', '44' ) . 
+                    Message::color_text( ' =>  ', '104' ).
+                    Message::color_text( $cl->get_name(), '44' ) . PHP_EOL.PHP_EOL;
+        
+        
         }
     }
 }

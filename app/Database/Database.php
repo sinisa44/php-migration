@@ -8,12 +8,13 @@ use App\Message\Message;
 
 class Database {
     
-    /*
+    /** 
     *Display all tables from database
     *
-    *@param string
+    *@param string $table_name
     *
-    */
+    *@return void
+    **/
     public static function show_tables( $table_name ){
         $tables =  Capsule::schema()->getAllTables();
         
@@ -25,13 +26,13 @@ class Database {
         }
     }
     
-    /*
+    /** 
     *Display columns for selected table
     *
-    *@param string
+    *@param string $table_name
     *
-    @throws Error if table is not exist
-    */
+    *@throws Error if table is not exist
+    **/
     public static function show_columns( $table_name ) {
      
         $table = Capsule::schema()->getColumnListing( $table_name );
@@ -52,8 +53,8 @@ class Database {
     /**
      * Drops table from current database
      * 
-     * @param string
-     * @param file
+     * @param string $command
+     * @param file $file
      * 
      * @throws Error if table is not exist
      */
@@ -80,9 +81,9 @@ class Database {
         } 
     }
     /**
-     * Renames table
+     * Rename table
      * 
-     * 
+     * @return void
      */
 
     public static function rename_table() {
@@ -105,7 +106,15 @@ class Database {
             Message::display_error( 'There is no table with name: "' . $old_name . '"' );
         }
     }
+    
 
+    /**
+     * Trims file name
+     * 
+     * @param string
+     * 
+     * @return string
+     */
     private static function handle_cli( $handle ) {
         return trim( fgets( fopen( $handle, 'r' ) ) );
     }

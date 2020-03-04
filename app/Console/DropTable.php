@@ -10,7 +10,7 @@ class DropTable {
 
     public function run( $option = null ) {
         if( empty( $option ) ){
-            Message::display_error( 'Table name is required' );
+          echo  Message::display_error( 'Table name is required' );
             exit;
         }
         Database::drop_table( $option, 'resources/files/table_names.txt' );

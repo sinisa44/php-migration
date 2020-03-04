@@ -9,7 +9,7 @@ class ShowColumns {
 
     public function run( $option = null ) {
         if( empty( $option ) ) {
-            Message::display_error( 'Table name is reuqired' );
+          echo  Message::display_error( 'Table name is reuqired' );
         }
         Database::show_columns( $option );
      }

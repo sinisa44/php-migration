@@ -7,7 +7,7 @@ class RenameTable {
     private $description = "Rename selected table in current database";
 
     public function run( $option = null ) {
-    Database::rename_table() ;     
+       Database::rename_table() ;     
     }
         
     public function get_name() {
